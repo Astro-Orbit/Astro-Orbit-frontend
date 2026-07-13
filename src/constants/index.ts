@@ -9,6 +9,17 @@ export const ROUTES = {
   SETTINGS_APPEARANCE: '/settings/appearance',
   SETTINGS_API_KEYS: '/settings/api-keys',
   PROFILE: '/profile',
+  ORGANIZATIONS: '/organizations',
+  ORGANIZATION_NEW: '/organizations/new',
+  ORGANIZATION: (id: string) => `/organizations/${id}`,
+  PROJECTS: '/projects',
+  PROJECT: (id: string) => `/projects/${id}`,
+  CONTRACTS: '/contracts',
+  CONTRACT: (id: string) => `/contracts/${id}`,
+  DEPLOYMENTS: '/deployments',
+  DEPLOYMENT: (id: string) => `/deployments/${id}`,
+  ANALYTICS: '/analytics',
+  REPOSITORIES: '/repositories',
 } as const;
 
 export const STORAGE_KEYS = {
@@ -32,6 +43,33 @@ export const API_ENDPOINTS = {
     BASE: '/organizations',
     BY_ID: (id: string) => `/organizations/${id}`,
     INVITE: (id: string) => `/organizations/${id}/invite`,
+    MEMBERS: (id: string) => `/organizations/${id}/members`,
+  },
+  PROJECTS: {
+    BY_ORG: (orgId: string) => `/orgs/${orgId}/projects`,
+    BY_ID: (id: string) => `/projects/${id}`,
+  },
+  CONTRACTS: {
+    BY_PROJECT: (projectId: string) => `/projects/${projectId}/contracts`,
+    BY_ID: (id: string) => `/contracts/${id}`,
+    VERSIONS: (id: string) => `/contracts/${id}/versions`,
+  },
+  DEPLOYMENTS: {
+    BY_PROJECT: (projectId: string) => `/projects/${projectId}/deployments`,
+    BY_ID: (id: string) => `/deployments/${id}`,
+    ROLLBACK: (id: string) => `/deployments/${id}/rollback`,
+    CANCEL: (id: string) => `/deployments/${id}/cancel`,
+    LOGS: (id: string) => `/deployments/${id}/logs`,
+  },
+  REPOS: {
+    BY_PROJECT: (projectId: string) => `/projects/${projectId}/repositories`,
+    BY_ID: (id: string) => `/repositories/${id}`,
+    SYNC: (id: string) => `/repositories/${id}/sync`,
+  },
+  ANALYTICS: {
+    OVERVIEW: (orgId: string) => `/orgs/${orgId}/analytics/overview`,
+    DASHBOARD_STATS: (orgId: string) => `/orgs/${orgId}/dashboard/stats`,
+    ACTIVITY: '/dashboard/activity',
   },
   API_KEYS: '/api-keys',
 } as const;
